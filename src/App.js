@@ -16,8 +16,11 @@ function App() {
     })
   }
   function check(pass){
-    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/; 
-    return regex.test(pass)
+    let regex = /^(?=.*[A-Z])(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
+    if (["@", ".", "#", "$", "!", "%", "*", "?", "&"].includes(pass.charAt(0))) {
+        return false
+    }
+    return regex.test(pass);
   }
   let flag = false
   let pw = false;
